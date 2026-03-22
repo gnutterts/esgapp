@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Niet beschikbaar — ESGapp</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+            background: #f9fafb;
+            color: #374151;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: #1e3a5f;
+            padding: 1rem 1.5rem;
+        }
+
+        header span {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: .01em;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1.5rem;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: .75rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,.08);
+            max-width: 480px;
+            width: 100%;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1.25rem;
+            background: #eff6ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: #1e3a5f;
+        }
+
+        h1 {
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: #1e3a5f;
+            margin-bottom: .75rem;
+        }
+
+        p {
+            font-size: .9375rem;
+            line-height: 1.65;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        p:last-of-type { margin-bottom: 1.75rem; }
+
+        .btn {
+            display: inline-block;
+            background: #1e3a5f;
+            color: #fff;
+            font-size: .875rem;
+            font-weight: 600;
+            padding: .6rem 1.4rem;
+            border-radius: .5rem;
+            text-decoration: none;
+            transition: background .15s;
+        }
+
+        .btn:hover { background: #16304f; }
+
+        footer {
+            text-align: center;
+            padding: 1.25rem;
+            font-size: .8125rem;
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <span>ESGapp</span>
+</header>
+
+<main>
+    <div class="card">
+        <div class="icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M12 9v3.75m0 3.75h.008v.008H12v-.008zm.75-13.5A9.75 9.75 0 1 0 12 21.75 9.75 9.75 0 0 0 12.75 2.25z"/>
+            </svg>
+        </div>
+
+        <h1>Toegang niet mogelijk vanuit jouw regio</h1>
+
+        <p>
+            ESGapp is uitsluitend toegankelijk vanuit Europa.
+            Jouw verbinding komt van buiten dit gebied, waardoor de pagina
+            niet geladen kan worden.
+        </p>
+
+        <p>
+            Ben je lid van schaakclub ESG en zie je dit bericht onterecht?
+            Neem dan contact op met de wedstrijdleider.
+        </p>
+
+        <a class="btn" href="mailto:info@esgapp.nl">Contact opnemen</a>
+    </div>
+</main>
+
+<footer>
+    &copy; ESGapp
+</footer>
+
+</body>
+</html>

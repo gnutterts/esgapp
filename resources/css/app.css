@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@import '@fontsource-variable/inter';
+
+@theme {
+    --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-navy: #1e3a5f;
+    --color-navy-light: #2a4f7f;
+    --color-navy-dark: #16304f;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Dark mode: toggle via .dark class on <html> */
+@variant dark (&:where(.dark, .dark *));
+
+/* Theme toggle button active state (applied via JS) */
+.theme-btn-active {
+    background-color: rgb(255 255 255 / 0.2);
+    color: #fff;
+}
+.theme-btn-inactive {
+    color: #bfdbfe; /* blue-200 */
+}
+
+/* Prose customisation for rendered markdown — navy headings and links */
+.prose :where(h1, h2, h3, h4):not(:where([class~="not-prose"] *)) {
+    color: var(--color-navy);
+}
+.dark .prose :where(h1, h2, h3, h4):not(:where([class~="not-prose"] *)) {
+    color: #93b4d8;
+}
+.prose :where(a):not(:where([class~="not-prose"] *)) {
+    color: var(--color-navy);
+}
+.dark .prose :where(a):not(:where([class~="not-prose"] *)) {
+    color: #93b4d8;
+}
+.prose :where(blockquote):not(:where([class~="not-prose"] *)) {
+    border-left-color: var(--color-navy);
+}

@@ -1,0 +1,44 @@
+# Enable GeoIP lookup (database path is configured server-side)
+<IfModule mod_geoip.c>
+    GeoIPEnable On
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+    RewriteEngine On
+
+    # -------------------------------------------------------
+    # Geo-blocking: blokkeer als ALLE drie condities gelden:
+    #   1. niet de foutpagina zelf
+    #   2. er is een landcode (bekend IP)
+    #   3. landcode staat niet in de Europese lijst
+    # -------------------------------------------------------
+    RewriteCond %{REQUEST_URI} !^/geo-blocked\.html$
+    RewriteCond %{ENV:GEOIP_COUNTRY_CODE} !^$
+    RewriteCond %{ENV:GEOIP_COUNTRY_CODE} !^(AD|AL|AT|BA|BE|BG|BY|CH|CY|CZ|DE|DK|EE|ES|FI|FR|GB|GR|HR|HU|IE|IS|IT|LI|LT|LU|LV|MC|MD|ME|MK|MT|NL|NO|PL|PT|RO|RS|RU|SE|SI|SK|SM|UA|VA|XK)$
+    RewriteRule ^ /geo-blocked.html [R=302,L]
+    # -------------------------------------------------------
+
+ErrorDocument 403 /geo-blocked.html
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Handle X-XSRF-Token Header
+    RewriteCond %{HTTP:x-xsrf-token} .
+    RewriteRule .* - [E=HTTP_X_XSRF_TOKEN:%{HTTP:X-XSRF-Token}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Send Requests To Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
